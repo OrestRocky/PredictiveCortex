@@ -1,0 +1,25 @@
+Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+Jupyter Notebook
+.ipynb_checkpoints/
+
+# Go build files
+*.exe
+*.out
+*.test
+
+VS Code
+.vscode/
+
+Python virtual environment
+venv/
+.env
+.env.*
+
+OS files
+.DS_Store
+
+Thumbs.db
