@@ -1,6 +1,6 @@
 PredictiveCortex
 
-A Theoretical Framework for Foresight-Capable Language Models**
+A Theoretical Framework for Foresight-Capable Language Models
 
 "To predict is not to guess — it is to model the unfolding of structured causality across time, agents, and information."  
 Orest Yatskuliak, Initiator of the PredictiveCortex Research Project*
@@ -19,7 +19,8 @@ We postulate that prediction, in its cognitive essence, is an emergent property 
 - Multi-agent dynamics
 - Causal chain reasoning
 
-This repository lays the theoretical groundwork, partial implementations, and philosophical rationale for future research on cognitive-level foresight within AI systems.
+This repository lays the theoretical groundwork, partial implementations, and philosophical rationale for future research on cognitive-level
+foresight within AI systems.
 
 System Architecture
 ```
@@ -58,7 +59,8 @@ This is not a "forecast" — it is a **structural simulation** of plausible outc
 Sample Code Snippets
 
 Python: Temporal Token Mapper
-```python
+```
+python
 def encode_temporal_vector(event_sequence):
     # Hypothetical vectorization logic
     import numpy as np
@@ -68,7 +70,8 @@ def encode_temporal_vector(event_sequence):
 ```
 
 Go: Agent Causality Chain
-```go
+```
+go
 package agent
 
 import "fmt"
@@ -83,7 +86,6 @@ func (a *Agent) Act(situation string) string {
     return fmt.Sprintf("%s reacts to %s based on beliefs %v", a.Name, situation, a.Beliefs)
 }
 ```
-
 Ontological Structure Table (Example)
 
 | Layer | Domain           | Sample Entities                   | Type         |
