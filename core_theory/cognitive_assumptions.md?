@@ -1,0 +1,40 @@
+Cognitive Assumptions Behind PredictiveCortex
+
+This document outlines the core cognitive and philosophical assumptions that inspire the structure 
+and purpose of the PredictiveCortex framework. These ideas are abstracted from human foresight 
+mechanisms and mapped onto theoretical LLM capacities.
+
+Assumption 1 — Prediction Is a Mental Construct
+
+In humans, prediction is not a direct function of past data, but a projection based on beliefs, 
+intentions, analogies, and symbolic reasoning.  
+LLMs, while statistical in origin, can be guided to mimic this projectional logic via structured simulation.
+
+Assumption 2 — The Mind Simulates Futures, Not Just Data
+
+Cognitive foresight emerges from simulating possible outcomes and emotionally evaluating them before acting.  
+PredictiveCortex integrates multi-agent simulation to reflect this inner rehearsal of futures.
+
+Assumption 3 — Meaning Precedes Calculation
+
+Humans don’t reason in raw tokens. Meaning — not syntax — governs future modeling.  
+Thus, LLM predictions must be grounded in ontologies, not just pre-trained embeddings.
+
+Assumption 4 — Uncertainty Is an Epistemic Constant
+
+Human prediction accepts risk, ambiguity, and context.  
+LLMs should output multiple conditional scenarios, not one overconfident answer.
+
+Assumption 5 — Cognitive Constraints Guide Foresight
+
+We don’t aim to mimic “perfect” AI foresight.  
+We simulate **bounded rationality**: reasonable predictions made under limited time, data, or perspective — just like humans do.
+
+ 🌀 Summary
+
+| Assumption                     | Implication for LLM Design                    |
+|-------------------------------|-----------------------------------------------|
+| Prediction is symbolic         | LLM must simulate, not extrapolate           |
+| Mind runs futures internally  | Add agent-based scenario simulations         |
+| Meaning is structured         | Use ontologies, not just embeddings          |
+| Uncertainty is natural        | Encourage probabilistic outp
