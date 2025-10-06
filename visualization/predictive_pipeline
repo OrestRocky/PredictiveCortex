@@ -1,0 +1,6 @@
+flowchart LR
+    A[Inputs\nSignals, Events, Priors] --> B[Agent Modules\n(momentum, mean-rev, macro)]
+    B --> C[Temporal Model\nMarkov / State-Space]
+    C --> D[Consensus Layer\nweighted aggregation]
+    D --> E[Decision / Forecast\nbear | neutral | bull]
+    D --> F[Export\nCSV, JSON, Dashboard]
