@@ -110,5 +110,11 @@ This project is a **theoretical framework** only. We do not claim operational fo
 If you're a researcher, cognitive scientist, AI engineer, or philosopher interested in predictive reasoning systems — let’s collaborate.
 
 “Prediction is not a number. It's a worldview filtered through information structure.”
+## Quickstart Demo
+
+Run a minimal temporal forecast with multi-agent consensus:
+
+```bash
+python3 scripts/temporal_forecast_demo.py
 
 
