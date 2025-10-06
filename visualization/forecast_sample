@@ -1,0 +1,75 @@
+# scripts/temporal_forecast_demo.py
+"""
+PredictiveCortex — Temporal Forecast Demo
+- Simple Markov transition + agent consensus over T steps
+- Saves a CSV in visualization/forecast_sample.csv
+"""
+import csv
+from collections import defaultdict
+
+STATES = ["bear", "neutral", "bull"]
+
+# toy Markov transitions (rows->cols): P(next_state|state)
+TRANSITIONS = {
+    "bear":   {"bear": 0.60, "neutral": 0.30, "bull": 0.10},
+    "neutral":{"bear": 0.25, "neutral": 0.50, "bull": 0.25},
+    "bull":   {"bear": 0.10, "neutral": 0.30, "bull": 0.60},
+}
+
+# three toy agents with different priors/weights
+AGENTS = {
+    "momentum": {"prior": {"bear": 0.15, "neutral": 0.35, "bull": 0.50}, "weight": 0.5},
+    "meanrev":  {"prior": {"bear": 0.40, "neutral": 0.45, "bull": 0.15}, "weight": 0.3},
+    "macro":    {"prior": {"bear": 0.30, "neutral": 0.40, "bull": 0.30}, "weight": 0.2},
+}
+
+def step_markov(dist):
+    nxt = {s: 0.0 for s in STATES}
+    for s in STATES:
+        for t in STATES:
+            nxt[t] += dist[s] * TRANSITIONS[s][t]
+    total = sum(nxt.values()) or 1.0
+    return {k: v/total for k, v in nxt.items()}
+
+def weighted_consensus(agent_posteriors):
+    acc = defaultdict(float)
+    wsum = 0.0
+    for name, post in agent_posteriors.items():
+        w = AGENTS[name]["weight"]
+        wsum += w
+        for s, p in post.items():
+            acc[s] += w * p
+    return {s: acc[s]/wsum for s in STATES}
+
+def run(T=10, start="neutral"):
+    # initialize agents with their priors
+    posts = {name: dict(info["prior"]) for name, info in AGENTS.items()}
+    history = []
+    current = {s: 1.0 if s == start else 0.0 for s in STATES}
+
+    for t in range(T+1):
+        consensus = weighted_consensus(posts)
+        top_state = max(consensus, key=consensus.get)
+        history.append({"t": t, **consensus, "argmax": top_state})
+
+        # evolve agents one step using Markov
+        for name in AGENTS.keys():
+            posts[name] = step_markov(posts[name])
+        current = step_markov(current)
+
+    return history
+
+def save_csv(rows, path="visualization/forecast_sample.csv"):
+    fieldnames = ["t", "bear", "neutral", "bull", "argmax"]
+    with open(path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for r in rows:
+            writer.writerow(r)
+
+if __name__ == "__main__":
+    rows = run(T=12, start="neutral")
+    save_csv(rows)
+    print("✅ Saved: visualization/forecast_sample.csv")
+    print("Last consensus:", rows[-1])
+
